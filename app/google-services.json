@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873354288142",
+    "project_id": "medify-f5698",
+    "storage_bucket": "medify-f5698.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873354288142:android:0962af17f4d43091f7b05f",
+        "android_client_info": {
+          "package_name": "com.applepulse.activeaura"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMzZE-KaLRHsRG8vSxMJl5NavFXu9eN8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
