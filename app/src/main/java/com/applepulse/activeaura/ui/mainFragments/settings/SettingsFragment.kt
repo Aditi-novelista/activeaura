@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.applepulse.activeaura.R
 import com.applepulse.activeaura.base.ViewModelFactory
 import com.applepulse.activeaura.databinding.BottomsheetModalBinding
-import com.applepulse.activeaura.ui.mainFragments.settings.prescription.AddPrescriptionActivity
 import com.applepulse.activeaura.ui.auth.signInScreen.SignInScreen
 import com.applepulse.activeaura.databinding.FragmentSettingsBinding
 import com.applepulse.activeaura.model.SettingsItem
@@ -69,11 +68,10 @@ class SettingsFragment : Fragment() {
     private fun setupSettings() {
         settingsItemList.apply {
             add(SettingsItem(0, R.drawable.edit_profile, getString(R.string.edit_profile)))
-            add(SettingsItem(1, R.drawable.upload_prescription, getString(R.string.upload_prescription)))
-            add(SettingsItem(2, R.drawable.info, getString(R.string.about_us)))
-            add(SettingsItem(3, R.drawable.feedback, getString(R.string.feedback)))
-            add(SettingsItem(4, R.drawable.need_help, getString(R.string.need_help)))
-            add(SettingsItem(5, R.drawable.logout, getString(R.string.logout)))
+            add(SettingsItem(1, R.drawable.info, getString(R.string.about_us)))
+            add(SettingsItem(2, R.drawable.feedback, getString(R.string.feedback)))
+            add(SettingsItem(3, R.drawable.need_help, getString(R.string.need_help)))
+            add(SettingsItem(4, R.drawable.logout, getString(R.string.logout)))
         }
 
         settingsItemAdapter =
@@ -85,10 +83,6 @@ class SettingsFragment : Fragment() {
                     SettingsState.getSettingsState(SettingsState.TO_EDIT_PROFILE) -> {
                         startActivity(Intent(requireActivity(), ProfileActivity::class.java))
 //                        findNavController().navigate(R.id.action_settings_to_profileFragment)
-                    }
-
-                    SettingsState.getSettingsState(SettingsState.TO_UPLOAD_PRESCRIPTION) -> {
-                        navigateToUploadPrescription()
                     }
 
 
@@ -116,22 +110,6 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    private fun navigateToUploadPrescription() {
-        startActivity(Intent(requireActivity(), AddPrescriptionActivity::class.java))
-        FirebaseDatabase.getInstance().reference.child(Constants.Users)
-            .child(settingsViewModel.userLiveData.value!!.UID.toString()).child(Constants.Prescription)
-            .addValueEventListener(object :
-                ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val presURL = snapshot.child("fileurl").value.toString().trim()
-                    val editor = sharedPreferences.edit()
-                    editor.putString("prescription", presURL)
-                    editor.apply()
-                }
-
-                override fun onCancelled(error: DatabaseError) {}
-            })
-    }
 
     private fun needHelp() {
         val dialog = BottomsheetModalBinding.inflate(layoutInflater)

@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.applepulse.activeaura.ui.mainFragments.settings.prescription.AddPrescriptionActivity
 import com.applepulse.activeaura.databinding.ActivityEditProfileBinding
 import com.applepulse.activeaura.utils.Constants
 import com.applepulse.activeaura.utils.SharedPrefsExtension.getUserFromSharedPrefs
@@ -33,9 +32,6 @@ class EditProfileActivity : AppCompatActivity() {
 
             updateData(name,age,phoneno)
         }
-        binding.updatepres.setOnClickListener {
-            startActivity(Intent(baseContext, AddPrescriptionActivity::class.java))
-        }
     }
 
     private fun updateData(name: String, age: String, phoneno: String) {
@@ -48,7 +44,7 @@ class EditProfileActivity : AppCompatActivity() {
             "age" to age,
             "phone" to phoneno
         )
-//        Logger.debugLog("Check_UserID", userID)
+
         db.child(userID).updateChildren(user).addOnSuccessListener {
 
             binding.editName.text.clear()

@@ -51,12 +51,6 @@ class ViewModelFactory : ViewModelProvider.Factory {
                 isAssignableFrom(ProfileViewModel::class.java) -> {
                     ProfileViewModel(application)
                 }
-//                isAssignableFrom(FirebaseViewModel::class.java) -> {
-//                    FirebaseViewModel()
-//                }
-//                isAssignableFrom(CustomizeQRViewModel::class.java) -> {
-//                    CustomizeQRViewModel(application)
-//                }
 
                 else -> throw IllegalArgumentException("Unknown ViewModel class")
             }
