@@ -27,7 +27,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/dm_sans_medium"
         android:text="@string/successfully_booked_an_appointment"
-        android:textColor="@color/green_shade_light_2"
+        android:textColor="@color/accounts_card_color"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/nameDisplay"
         app:layout_constraintTop_toBottomOf="@+id/nameDisplay" />

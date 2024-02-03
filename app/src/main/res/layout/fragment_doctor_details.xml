@@ -59,7 +59,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_call"
-            tools:text="Dr.Binay Shaw" />
+            tools:text="Dr. Clark Copperfield" />
 
         <TextView
             android:id="@+id/doctor_Specialization"
@@ -82,6 +82,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/phone"
+            android:outlineAmbientShadowColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent" />
 

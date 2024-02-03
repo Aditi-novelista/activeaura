@@ -19,7 +19,7 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Hi Mr. Binay" />
+        tools:text="Hi Miss Ophelia" />
 
     <TextView
         android:id="@+id/want_to_book_an_appointment"
@@ -28,7 +28,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/dm_sans_medium"
         android:text="@string/want_to_book_an_appointment"
-        android:textColor="@color/green_shade_light_2"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/nameDisplay"
         app:layout_constraintTop_toBottomOf="@+id/nameDisplay" />

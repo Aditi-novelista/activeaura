@@ -11,7 +11,7 @@
         android:id="@+id/button_constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/button_disable_color"
+        android:background="@drawable/gradient_background"
         android:paddingHorizontal="20dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat

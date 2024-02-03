@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Tell us more about yourself"
-        android:textColor="@color/green_shade_light_2"
+        android:textColor="@color/accounts_card_color"
         app:layout_constraintStart_toStartOf="@+id/nameDisplay"
         app:layout_constraintTop_toBottomOf="@+id/nameDisplay" />
 

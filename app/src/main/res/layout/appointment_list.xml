@@ -23,7 +23,7 @@
             android:layout_height="25dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/star_rate"
-            android:backgroundTint="@color/green_shade_dark_1"
+            android:backgroundTint="@color/black"
             android:fontFamily="@font/dm_sans_medium"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/downloadPrescription"
@@ -36,7 +36,7 @@
             android:layout_height="25dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/download"
-            android:backgroundTint="@color/background_gradient_start_color"
+            android:backgroundTint="@color/black"
             android:fontFamily="@font/dm_sans_medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/dm_sans_bold"
                 tools:text="Doctor Name: "
-                android:textColor="@color/green_shade_dark_1"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/dm_sans"
                 tools:text="Disease: "
-                android:textColor="@color/green_shade_dark_2"
+                android:textColor="#AC27C3"
                 android:textSize="15sp" />
 
         </LinearLayout>
