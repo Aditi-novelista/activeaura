@@ -12,12 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.applepulse.activeaura.base.ViewModelFactory
 import com.applepulse.activeaura.databinding.FragmentPatientQueueBinding
-import com.applepulse.activeaura.databinding.RatingModalBinding
 import com.applepulse.activeaura.model.DoctorAppointment
-import com.applepulse.activeaura.model.Rating
 import com.applepulse.activeaura.ui.adapter.PatientQueueAdapter
-import com.applepulse.activeaura.utils.DialogUtil.createBottomSheet
-import com.applepulse.activeaura.utils.DialogUtil.setBottomSheet
 import java.text.SimpleDateFormat
 
 
@@ -50,7 +46,7 @@ class PatientQueueFragment : Fragment() {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.setHasFixedSize(true)
             patientQueueAdapter = PatientQueueAdapter(args.doctorUserID) {
-                showRatingBottomSheet(it)
+
             }
             recyclerView.adapter = patientQueueAdapter
         }
@@ -63,30 +59,6 @@ class PatientQueueFragment : Fragment() {
         return format.parse(appointmentDateTime)?.toString() ?: ""
     }
 
-    private fun showRatingBottomSheet(doctorAppointment: DoctorAppointment) {
-        val dialog = RatingModalBinding.inflate(layoutInflater)
-        val bottomSheet = requireContext().createBottomSheet()
-        dialog.apply {
-            this.apply {
-                submitRating.setOnClickListener {
-                    val rating = Rating(
-                        patientId = doctorAppointment.PatientID!!,
-                        doctorId = doctorAppointment.DoctorUID!!,
-                        rating = ratingBar.rating,
-                        review = ratingComment.text.toString().trim(),
-                        patientName = doctorAppointment.PatientName!!,
-                        timestamp = getAppointmentDateTime(
-                            doctorAppointment.Date,
-                            doctorAppointment.Time!!
-                        )
-                    )
-                    patientQueueViewModel.updateRating(rating)
-                    bottomSheet.dismiss()
-                }
-            }
-        }
-        dialog.root.setBottomSheet(bottomSheet)
-    }
 
     private fun initObservers() {
         patientQueueViewModel.run {

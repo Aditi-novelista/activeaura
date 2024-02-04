@@ -18,14 +18,9 @@ import com.applepulse.activeaura.R
 import com.applepulse.activeaura.adapter.DoctorListAdapter
 import com.applepulse.activeaura.base.ViewModelFactory
 import com.applepulse.activeaura.databinding.FragmentHomeBinding
-import com.applepulse.activeaura.databinding.RatingDisputeLayoutBinding
 import com.applepulse.activeaura.model.Doctor
 import com.applepulse.activeaura.model.User
-import com.applepulse.activeaura.utils.Constants
-import com.applepulse.activeaura.utils.DialogUtil.createBottomSheet
-import com.applepulse.activeaura.utils.DialogUtil.setBottomSheet
 import com.applepulse.activeaura.utils.Logger
-import com.applepulse.activeaura.utils.Utils
 import com.applepulse.activeaura.utils.Utils.containsLetters
 import com.applepulse.activeaura.utils.Utils.toStringWithoutSpaces
 import com.google.android.material.chip.Chip
@@ -68,7 +63,7 @@ class HomeFragment : Fragment() {
 
         doctorListAdapter = DoctorListAdapter {
             val rating = homeViewModel.totalRating.value!!
-            binding.doctorData.setText("")
+            binding.doctorData.setText("") //search bar
             onDoctorCardClick(it, rating)
         }
 
@@ -78,20 +73,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun onDoctorCardClick(doctor: User, rating: Float) {
-        if (homeViewModel.user.value?.Prescription.isNullOrEmpty().not()) {
-            if (rating < Constants.ratingThreshold) {
-                showAlertDialog()
-                return
-            }
-            val action = HomeFragmentDirections.actionHomeToDoctorDetailsFragment(doctor)
-            findNavController().navigate(action)
-        } else {
-            Toast.makeText(
-                requireActivity(),
-                getString(R.string.please_upload_your_prescription_in_settings_tab),
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+        val action = HomeFragmentDirections.actionHomeToDoctorDetailsFragment(doctor)
+        findNavController().navigate(action)
     }
 
     private fun initObservers() {
@@ -169,55 +152,5 @@ class HomeFragment : Fragment() {
         } else {
             doctorListAdapter.addItems(homeViewModel.doctorList.value!!)
         }
-    }
-
-    private fun showAlertDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Ineligible to book an appointment")
-        builder.setMessage("You need to have a rating of 3 or above to book an appointment")
-
-        builder.setPositiveButton("File a Dispute") { dialog, _ ->
-            showBottomSheetForDispute()
-            dialog.dismiss()
-        }
-
-        builder.setNegativeButton("Cancel") { dialog, _ ->
-            dialog.dismiss()
-        }
-
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
-
-    private fun showBottomSheetForDispute() {
-        val dialog = RatingDisputeLayoutBinding.inflate(layoutInflater)
-        val bottomSheet = requireContext().createBottomSheet()
-        dialog.apply {
-            this.apply {
-                btnSubmitDispute.setOnClickListener {
-                    Logger.debugLog("Dispute Clicked")
-                    val subject = disputeSubject.text.toString().trim()
-                    val reason = disputeReason.text.toString().trim()
-
-                    if (subject.isEmpty() || reason.isEmpty()) {
-                        Toast.makeText(
-                            requireContext(),
-                            "Please fill all the fields",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        return@setOnClickListener
-                    }
-
-                    Utils.sendEmailToGmail(
-                        requireActivity(),
-                        subject,
-                        reason,
-                        Constants.supportEmail
-                    )
-                    bottomSheet.dismiss()
-                }
-            }
-        }
-        dialog.root.setBottomSheet(bottomSheet)
     }
 }
