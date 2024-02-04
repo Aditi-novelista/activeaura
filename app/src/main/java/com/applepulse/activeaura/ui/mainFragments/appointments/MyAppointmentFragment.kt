@@ -57,7 +57,8 @@ class MyAppointmentFragment : Fragment() {
     private fun initViews() {
         binding.run {
             appointmentAdapter = PatientAppointmentAdapter {
-                navigateToPatientQueue(it.DoctorUID!!, it.Date, true)
+//                user cannot see patient queue
+//                navigateToPatientQueue(it.DoctorUID!!, it.Date, true)
             }
             recyclerview = binding.appointmentRecyclerview
             recyclerview.adapter = appointmentAdapter

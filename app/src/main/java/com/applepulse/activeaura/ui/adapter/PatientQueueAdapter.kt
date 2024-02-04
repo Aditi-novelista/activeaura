@@ -70,12 +70,6 @@ class PatientQueueAdapter(
 
 
         holder.disease.text = currentItem.Disease + " - " + currentItem.PatientCondition
-        holder.button.setOnClickListener {
-            val intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse(currentItem.Prescription.toString().trim()))
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            holder.button.context.startActivity(intent)
-        }
 
         holder.rate.setOnClickListener {
             listener(currentItem)
