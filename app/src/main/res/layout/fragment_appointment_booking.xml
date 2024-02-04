@@ -162,7 +162,7 @@
             app:layout_constraintEnd_toEndOf="@+id/menu_situation"
             app:layout_constraintStart_toStartOf="@+id/menu_situation"
             app:layout_constraintTop_toBottomOf="@+id/menu_situation"
-            app:outer_color="@color/green_shade_dark_1"
+            app:outer_color="@color/background_gradient_end_color"
             app:text="@string/confirm_your_appointment"
             app:text_color="@color/white" />
     </LinearLayout>
