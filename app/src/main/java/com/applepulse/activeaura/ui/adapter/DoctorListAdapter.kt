@@ -27,6 +27,7 @@ class DoctorListAdapter(val listener: (User)-> Unit) : RecyclerView.Adapter<Doct
         viewType: Int
     ): DoctorListViewModel {
 
+
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.doctor_card_layout,parent,false)
         return DoctorListViewModel(itemView)
     }
@@ -52,7 +53,6 @@ class DoctorListAdapter(val listener: (User)-> Unit) : RecyclerView.Adapter<Doct
         return doctorList.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun addItems(list: List<User>) {
         doctorList.clear()
         doctorList.addAll(list)

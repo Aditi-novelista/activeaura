@@ -29,7 +29,6 @@ class PatientAppointmentAdapter(
         return appointmentList.size
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PatientAppointmentViewHolder, position: Int) {
         val currentItem = appointmentList[position]
 
@@ -51,7 +50,6 @@ class PatientAppointmentAdapter(
         val date: TextView = itemView.findViewById(R.id.dateDisplay)
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setData(appointment: List<PatientAppointment>) {
         this.appointmentList.clear()
         this.appointmentList.addAll(appointment)

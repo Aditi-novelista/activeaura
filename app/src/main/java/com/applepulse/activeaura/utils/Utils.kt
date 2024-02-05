@@ -173,6 +173,14 @@ object Utils {
         diseaseValue[context.getString(R.string.disease_kidney_stones)] = 4f
         diseaseValue[context.getString(R.string.disease_liver_tumors)] = 5f
 
+        diseaseValue["Alcohol use disorder",] = 6f
+        diseaseValue["Alzheimer’s disease"] = 5f
+        diseaseValue["Acute Spinal Cord Injury"] = 4f
+        diseaseValue["Amyotrophic Lateral Sclerosis"] = 5f
+
+
+
+
         return diseaseValue
     }
 
@@ -243,7 +251,7 @@ object Utils {
                 "Pancreatitis",
                 "Stomach ache"
             ),
-            "Psychiatrists" to arrayOf(
+            "Psychiatrist" to arrayOf(
                 "Not sure",
                 "Alcohol use disorder",
                 "Alzheimer’s disease",
