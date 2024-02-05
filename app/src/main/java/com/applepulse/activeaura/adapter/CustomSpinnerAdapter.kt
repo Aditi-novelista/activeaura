@@ -40,7 +40,6 @@ class CustomSpinnerAdapter(
         return items.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setItem(list: List<String>) {
         items.clear()
         items.addAll(list)

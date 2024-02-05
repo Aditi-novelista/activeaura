@@ -26,17 +26,14 @@ class CustomButton @JvmOverloads constructor(
         initView(context, attrs)
     }
 
-    @SuppressLint("CustomViewStyleable")
     private fun initView(context: Context, attrs: AttributeSet?) {
 
         binding = LayoutPrimaryButtonBinding.inflate(LayoutInflater.from(context), this, true)
         context.obtainStyledAttributes(attrs, R.styleable.ButtonCustomLayout).apply {
             try {
                 val header = getString(R.styleable.ButtonCustomLayout_header)
-//                val endDrawableIcon = getDrawable(R.styleable.ButtonCustomLayout_endIcon)
                 val inputEnabled = getBoolean(R.styleable.ButtonCustomLayout_inputEnabled, false)
                 setHeader(header)
-//                setEndDrawableIcon(endDrawableIcon)
                 setButtonEnabled(inputEnabled)
             } finally {
                 recycle()
